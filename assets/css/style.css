@@ -1,0 +1,5 @@
+/* Will add this class to everything that I am hiding. Will use blue to test */
+.hide {
+  /* display: none; */
+  color: blue;
+}
