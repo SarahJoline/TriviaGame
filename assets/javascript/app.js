@@ -6,31 +6,65 @@
 //when button is pressed it stops the timer and tells you how many answers
 //you answered correctly/incorrectly/didn't answer.
 //if the player runs out the timer game ends automatically.
+
+var timer;
+var twoMinutes = 5;
+var correct;
+var incorrect;
+var unanswered;
+var timerRunning = false;
+
+//-------------Start Button code
+
 startGame();
 
 function startGame() {
   $(".startBtn").html(`<button>START</button>`);
+
   $(".startBtn").on("click", game);
 }
 
-function placeholder() {
-  $(".startBtn").on("click", game);
-}
-
-var timer;
-
-var twoMinutes = 120;
+//-----------Timer code.
 
 function countdown() {
   twoMinutes--;
   $(".timeLeft").html(`<h1>${twoMinutes}</h1>`);
 }
 
+//MISSING: When timer hits 0 stop the game and show the results
+//--------Game begins.
+
 function game() {
-  timer = setInterval(countdown, 1000);
-  console.log(twoMinutes);
-  console.log(timer);
+  if (!timerRunning) {
+    timer = setInterval(countdown, 1000);
+    timerRunning = true;
+  }
 }
+
+//------code to grade the game.
+
+finishGame();
+
+function finishGame() {
+  $(".finished").html(`<button>DONE</button>`);
+
+  $(".finished").on("click", checkForm);
+}
+
+function checkForm() {
+  if (document.getElementById("true").checked) {
+    correct++;
+    console.log("doing something");
+  } else if (document.getElementById("false").checked) {
+    incorrect++;
+    console.log("getting further");
+  } else {
+    unanswered++;
+  }
+}
+// if value of selected answer is equal to true correct answers +1
+//if value of selected answer is equal to false - wrong answers +1
+//else unanswered questions +1
 
 // var timer;
 

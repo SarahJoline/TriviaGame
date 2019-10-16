@@ -19,10 +19,19 @@
     <div class="quiz">
       <h3>Insert Question here</h3>
       <form class="Q1">
-        <input type="radio" name="gender" value="male" /> Male<br />
-        <input type="radio" name="gender" value="female" /> Female<br />
-        <input type="radio" name="gender" value="other" /> Other
+        <input type="radio" name="gender" value="male" id="true" /> Male<br />
+        <input type="radio" name="gender" value="female" id="false" />
+        Female<br />
+        <input type="radio" name="gender" value="other" id="false" /> Other
       </form>
+      <div id="myForm"></div>
+      <div class="finished"></div>
+    </div>
+
+    <div class="results">
+      <div class="correct-guesses"></div>
+      <div class="incorrect-guesses"></div>
+      <div class="unanswered-questions"></div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
