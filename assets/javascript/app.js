@@ -6,23 +6,25 @@
 //when button is pressed it stops the timer and tells you how many answers
 //you answered correctly/incorrectly/didn't answer.
 //if the player runs out the timer game ends automatically.
-
-var timer;
-var twoMinutes = 5;
-var correct;
-var incorrect;
-var unanswered;
+var intervalId;
+var twoMinutes = 6;
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
 var timerRunning = false;
 
 //-------------Start Button code
+//Get into the habit of using $(document).ready(function() {---})
 
-startGame();
+$(document).ready(function() {
+  $("#btnStart").on("click", game);
+  $("#btnDone").on("click", stopTimer);
+});
 
-function startGame() {
-  $(".startBtn").html(`<button>START</button>`);
-
-  $(".startBtn").on("click", game);
-}
+// function game2() {
+//   setTimeout(checkForm(), 1000 * 10);
+//   console.log("hey");
+// }
 
 //-----------Timer code.
 
@@ -36,30 +38,42 @@ function countdown() {
 
 function game() {
   if (!timerRunning) {
-    timer = setInterval(countdown, 1000);
+    intervalId = setInterval(countdown, 1000);
     timerRunning = true;
   }
 }
 
-//------code to grade the game.
-
-finishGame();
-
-function finishGame() {
-  $(".finished").html(`<button>DONE</button>`);
-
-  $(".finished").on("click", checkForm);
+function stopTimer() {
+  clearInterval(intervalId);
+  timerRunning = false;
+  checkForm();
 }
+
+// //------code to grade the game.
+
+// finishGame();
+
+// function finishGame() {
+//   $("#btnDone").on("click", stopTimer);
+// }
+
+// if (document.getElementByClass(".finished").clicked) {
+//   stopTimer();
+//   checkForm();
+// } else if (timer == 0) {
+//   checkForm();
+// }
 
 function checkForm() {
   if (document.getElementById("true").checked) {
     correct++;
-    console.log("doing something");
+    $(".correct-guesses").html(`<h3>Correct Guesses: ${correct} </h3>`);
   } else if (document.getElementById("false").checked) {
     incorrect++;
-    console.log("getting further");
+    $(".incorrect-guesses").html(`<h3>Incorrect Guesses: ${incorrect} </h3>`);
   } else {
     unanswered++;
+    $(".unanswered-qs").html(`<h3>Unanswered Questions: ${unanswered} </h3>`);
   }
 }
 // if value of selected answer is equal to true correct answers +1
@@ -85,3 +99,7 @@ function checkForm() {
 //     .removeClass("show")
 //     .addClass("hide");
 // }
+
+// document.getElementById("#btnDone").addEventListener("click", checkForm);
+// document.getElementById("#btnDone").addEventListener("click", stopTimer);
+//timer = setTimeout("checkForm()", 1000);
