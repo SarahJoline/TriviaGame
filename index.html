@@ -11,20 +11,16 @@
 
   <body>
     <!-- use this later for the header. For now keep is as an example of the toggle thing. -->
-    <h1 class="show" id="welcome">Hello World</h1>
+    <h1>Emperor Norton Trivia</h1>
 
-    <button id="btnStart">START</button>
+    <div class="show" id="start">
+      <button id="btnStart">START</button>
+    </div>
+
     <div class="timeLeft" id="timer"></div>
 
     <div class="quiz">
-      <h3>Insert Question here</h3>
-      <form class="Q1">
-        <input type="radio" name="gender" value="male" id="true" /> Male<br />
-        <input type="radio" name="gender" value="female" id="false" />
-        Female<br />
-        <input type="radio" name="gender" value="other" id="false" /> Other
-      </form>
-      <div id="myForm"></div>
+      <div class="quiz-content"></div>
       <button id="btnDone">DONE</button>
     </div>
 

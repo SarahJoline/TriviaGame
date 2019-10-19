@@ -1,17 +1,24 @@
-// Game starts with a start button
-// When start button is pressed, game begins
-// timer starts (2 minute timer)
-//list of questions where you can only select 1 answer.
-//button at the bottom
-//when button is pressed it stops the timer and tells you how many answers
-//you answered correctly/incorrectly/didn't answer.
-//if the player runs out the timer game ends automatically.
 var intervalId;
 var twoMinutes = 6;
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
 var timerRunning = false;
+var userGuess = [];
+var myQuiz = [
+  {
+    question: "Who?",
+    name: "Hey",
+    answers: ["Me", "You", "Him", "I"],
+    correctAnswer: 1
+  },
+  {
+    question: "What?",
+    name: "Ho",
+    answers: ["Me", "You", "Him", "I"],
+    correctAnswer: 3
+  }
+];
 
 //-------------Start Button code
 //Get into the habit of using $(document).ready(function() {---})
@@ -20,11 +27,6 @@ $(document).ready(function() {
   $("#btnStart").on("click", game);
   $("#btnDone").on("click", stopTimer);
 });
-
-// function game2() {
-//   setTimeout(checkForm(), 1000 * 10);
-//   console.log("hey");
-// }
 
 //-----------Timer code.
 
@@ -41,65 +43,52 @@ function game() {
     intervalId = setInterval(countdown, 1000);
     timerRunning = true;
   }
+  changeScreen(); //this works now
 }
 
 function stopTimer() {
   clearInterval(intervalId);
   timerRunning = false;
-  checkForm();
+  // checkForm();
+  gradeForm();
 }
 
-// //------code to grade the game.
+// is this the best way to turn multiple things invisible?
+//or should I put the code into each function where this is
+// called individually?
+function changeScreen() {
+  $("#btnStart")
+    .removeClass("show")
+    .addClass("hide");
+}
 
-// finishGame();
+//------code to grade the game.
 
-// function finishGame() {
-//   $("#btnDone").on("click", stopTimer);
-// }
+play();
 
-// if (document.getElementByClass(".finished").clicked) {
-//   stopTimer();
-//   checkForm();
-// } else if (timer == 0) {
-//   checkForm();
-// }
-
-function checkForm() {
-  if (document.getElementById("true").checked) {
-    correct++;
-    $(".correct-guesses").html(`<h3>Correct Guesses: ${correct} </h3>`);
-  } else if (document.getElementById("false").checked) {
-    incorrect++;
-    $(".incorrect-guesses").html(`<h3>Incorrect Guesses: ${incorrect} </h3>`);
-  } else {
-    unanswered++;
-    $(".unanswered-qs").html(`<h3>Unanswered Questions: ${unanswered} </h3>`);
+function play() {
+  for (i = 0; i < myQuiz.length; i++) {
+    $(`
+    <h3>${myQuiz[i].question}</h3>`).appendTo(".quiz-content");
+    $(
+      `<input type="radio" name=${myQuiz[i].name}>${
+        myQuiz[i].answers[0]
+      }</input>`
+    ).appendTo(".quiz-content");
+    $(
+      `<input type="radio" name=${myQuiz[i].name}>${
+        myQuiz[i].answers[1]
+      }</input>`
+    ).appendTo(".quiz-content");
+    $(
+      `<input type="radio" name=${myQuiz[i].name}>${
+        myQuiz[i].answers[2]
+      }</input>`
+    ).appendTo(".quiz-content");
+    $(
+      `<input type="radio" name=${myQuiz[i].name}>${
+        myQuiz[i].answers[3]
+      }</input>`
+    ).appendTo(".quiz-content");
   }
 }
-// if value of selected answer is equal to true correct answers +1
-//if value of selected answer is equal to false - wrong answers +1
-//else unanswered questions +1
-
-// var timer;
-
-// var twoMinutes = 120;
-
-// gameTime();
-
-// function countdown() {
-//   twoMinutes--;
-//   $(".timeLeft").html(`<h1>${twoMinutes}</h1>`);
-// }
-// function gameTime() {
-//   timer = setInterval(countdown, 1000);
-//   console.log(twoMinutes);
-//   console.log(timer);
-//   //example of the toggle
-//   $("#welcome")
-//     .removeClass("show")
-//     .addClass("hide");
-// }
-
-// document.getElementById("#btnDone").addEventListener("click", checkForm);
-// document.getElementById("#btnDone").addEventListener("click", stopTimer);
-//timer = setTimeout("checkForm()", 1000);
