@@ -2,3 +2,14 @@
 .hide {
   display: none;
 }
+
+.show {
+  display: block;
+}
+
+body {
+  text-align: center;
+}
+h1 {
+  font-size: 3rem;
+}
