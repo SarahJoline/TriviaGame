@@ -83,8 +83,6 @@ function changeScreen2() {
     .addClass("show");
 }
 
-
-
 play();
 
 function play() {
@@ -115,7 +113,6 @@ function play() {
 }
 
 function gradeForm() {
-
   for (var i = 0; i < myQuiz.length; i++) {
     var userGuess = $("input[name='" + myQuiz[i].name + "']:checked").val();
 
@@ -134,4 +131,4 @@ function gradeForm() {
       $(".unanswered-qs").html(`<h3>Unanswered Questions: ${unanswered} </h3>`);
     }
   }
-
+}
