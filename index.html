@@ -4,20 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Trivia Game</title>
   </head>
 
   <body>
-    <!-- use this later for the header. For now keep is as an example of the toggle thing. -->
-    <h1>Emperor Norton Trivia</h1>
-
+    <div class="title">
+      <h1>Emperor Norton Trivia</h1>
+    </div>
     <div id="start" class="show">
       <button id="btnStart">START</button>
     </div>
-
-    <div class="timeLeft" id="timer"></div>
+    <div class="timer-space">
+      <div class="timeLeft" id="timer"></div>
+    </div>
 
     <div id="quiz" class="hide">
       <div class="quiz-content"></div>
@@ -25,7 +30,6 @@
     </div>
 
     <div id="results" class="hide">
-        <div id="results" >
       <div class="correct-guesses"></div>
       <div class="incorrect-guesses"></div>
       <div class="unanswered-qs"></div>
