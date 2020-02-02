@@ -8,4 +8,4 @@ HTML, CSS, Javascipt, JQuery
 
 Here's a link to the deployed page:
 
-https://sarahjoline.github.io/Giphy-project/
+https://sarahjoline.github.io/TriviaGame/
